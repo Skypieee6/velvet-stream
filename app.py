@@ -50,6 +50,8 @@ HTML_TEMPLATE = """
     <title>Velvet | Premium Streaming</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://pl28556403.effectivegatecpm.com/4c/f8/8e/4cf88e1f5990dbbeafba4a2cbe51afeb.js"></script>
     <style>
         * { -webkit-tap-highlight-color: transparent; }
         body { background: #000; color: #fce7f3; font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif; overflow-x: hidden; user-select: none; padding-bottom: 80px; }
