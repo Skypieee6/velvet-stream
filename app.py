@@ -62,6 +62,7 @@ HTML_TEMPLATE = """
         .spinner { border: 3px solid rgba(255, 255, 255, 0.1); border-left-color: #db2777; border-radius: 50%; width: 30px; height: 30px; animation: spin 0.6s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .banner-slot { background: #111; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .banner-text { font-size: 10px; color: #444; text-transform: uppercase; font-weight: bold; }
         .refresh-btn { position: fixed; bottom: 80px; right: 20px; background: #db2777; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(219, 39, 119, 0.5); z-index: 900; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); }
         .refresh-btn:active { transform: scale(0.9); }
         #age-gate { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
@@ -83,7 +84,13 @@ HTML_TEMPLATE = """
 
     <div class="w-full h-[50px] banner-slot">
         <script type="text/javascript">
-            atOptions = {'key' : '9b5a73fe92b9613d4ea6430a59a86eea','format' : 'iframe','height' : 50,'width' : 320,'params' : {}};
+            atOptions = {
+                'key' : '9b5a73fe92b9613d4ea6430a59a86eea',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
         </script>
         <script type="text/javascript" src="https://www.highperformanceformat.com/9b5a73fe92b9613d4ea6430a59a86eea/invoke.js"></script>
     </div>
@@ -117,7 +124,13 @@ HTML_TEMPLATE = """
 
     <div class="fixed bottom-0 w-full h-[60px] bg-black border-t border-zinc-800 z-[200] banner-slot flex flex-col">
         <script type="text/javascript">
-            atOptions = {'key' : '9b5a73fe92b9613d4ea6430a59a86eea','format' : 'iframe','height' : 50,'width' : 320,'params' : {}};
+            atOptions = {
+                'key' : '9b5a73fe92b9613d4ea6430a59a86eea',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
         </script>
         <script type="text/javascript" src="https://www.highperformanceformat.com/9b5a73fe92b9613d4ea6430a59a86eea/invoke.js"></script>
     </div>
@@ -136,7 +149,13 @@ HTML_TEMPLATE = """
             
             <div class="w-full h-[250px] banner-slot mt-6 rounded-lg border border-zinc-800">
                 <script type="text/javascript">
-                    atOptions = {'key' : 'df5144983cf79f7c44c0f80316b9c61a','format' : 'iframe','height' : 250,'width' : 300,'params' : {}};
+                    atOptions = {
+                        'key' : 'df5144983cf79f7c44c0f80316b9c61a',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
                 </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/df5144983cf79f7c44c0f80316b9c61a/invoke.js"></script>
             </div>
@@ -238,8 +257,15 @@ def get_data():
     with data_lock:
         return jsonify(load_content(category))
 
+@app.route('/ads.txt')
+def serve_ads_txt():
+    try:
+        return Response(open('ads.txt').read(), mimetype='text/plain')
+    except:
+        return "ads.txt not found", 404
+
 @app.route('/')
 def index(): return render_template_string(HTML_TEMPLATE)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, threaded=True)
+    app.run(host='0.0.0.0', port=8080, threaded=True)
