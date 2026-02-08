@@ -14,7 +14,8 @@ HEADERS = {
 def fetch_single_page(query, page_num):
     try:
         url = f'https://www.eporner.com/api/v2/video/search/?query={query}&per_page=100&page={page_num}&format=json'
-        r = requests.get(url, headers=HEADERS, timeout=4)
+        # Increased timeout to 10 to ensure images load on free tier
+        r = requests.get(url, headers=HEADERS, timeout=10)
         if r.status_code == 200:
             return r.json().get('videos', [])
     except:
@@ -62,7 +63,6 @@ HTML_TEMPLATE = """
         .spinner { border: 3px solid rgba(255, 255, 255, 0.1); border-left-color: #db2777; border-radius: 50%; width: 30px; height: 30px; animation: spin 0.6s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .banner-slot { background: #111; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .banner-text { font-size: 10px; color: #444; text-transform: uppercase; font-weight: bold; }
         .refresh-btn { position: fixed; bottom: 80px; right: 20px; background: #db2777; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(219, 39, 119, 0.5); z-index: 900; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); }
         .refresh-btn:active { transform: scale(0.9); }
         #age-gate { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
@@ -257,16 +257,8 @@ def get_data():
     with data_lock:
         return jsonify(load_content(category))
 
-@app.route('/ads.txt')
-def serve_ads_txt():
-    try:
-        return Response(open('ads.txt').read(), mimetype='text/plain')
-    except:
-        return "ads.txt not found", 404
-
 @app.route('/')
 def index(): return render_template_string(HTML_TEMPLATE)
 
 if __name__ == '__main__':
-    # Updated to port 8000 for Koyeb compatibility
     app.run(host='0.0.0.0', port=8000, threaded=True)
