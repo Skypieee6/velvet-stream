@@ -51,7 +51,7 @@ HTML_TEMPLATE = """
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <script src="https://pl28677108.effectivegatecpm.com/d6/80/bf/d680bf022b8cce934cc749d85082a05c.js"></script>
+    <script src="https://pl21575495.highperformancegate.com/0c/49/74/0c497401a88b857777170889c1d09e51.js"></script>
 
     <style>
         * { -webkit-tap-highlight-color: transparent; }
@@ -85,14 +85,14 @@ HTML_TEMPLATE = """
     <div class="w-full h-[50px] banner-slot">
         <script type="text/javascript">
             atOptions = {
-                'key' : '9b5a73fe92b9613d4ea6430a59a86eea',
+                'key' : 'cfe6cbc6aec619a6b7586f34fd279feb',
                 'format' : 'iframe',
                 'height' : 50,
                 'width' : 320,
                 'params' : {}
             };
         </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/9b5a73fe92b9613d4ea6430a59a86eea/invoke.js"></script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/cfe6cbc6aec619a6b7586f34fd279feb/invoke.js"></script>
     </div>
 
     <header class="sticky top-0 bg-black/95 z-[100] border-b border-white/10 backdrop-blur-md">
@@ -125,14 +125,14 @@ HTML_TEMPLATE = """
     <div class="fixed bottom-0 w-full h-[60px] bg-black border-t border-zinc-800 z-[200] banner-slot flex flex-col">
         <script type="text/javascript">
             atOptions = {
-                'key' : '9b5a73fe92b9613d4ea6430a59a86eea',
+                'key' : 'cfe6cbc6aec619a6b7586f34fd279feb',
                 'format' : 'iframe',
                 'height' : 50,
                 'width' : 320,
                 'params' : {}
             };
         </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/9b5a73fe92b9613d4ea6430a59a86eea/invoke.js"></script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/cfe6cbc6aec619a6b7586f34fd279feb/invoke.js"></script>
     </div>
 
     <div id="section-player" class="hidden fixed inset-0 bg-black z-[500] overflow-y-auto pb-20">
@@ -150,14 +150,14 @@ HTML_TEMPLATE = """
             <div class="w-full h-[250px] banner-slot mt-6 rounded-lg border border-zinc-800">
                 <script type="text/javascript">
                     atOptions = {
-                        'key' : 'df5144983cf79f7c44c0f80316b9c61a',
+                        'key' : '0c497401a88b857777170889c1d09e51',
                         'format' : 'iframe',
                         'height' : 250,
                         'width' : 300,
                         'params' : {}
                     };
                 </script>
-                <script type="text/javascript" src="https://www.highperformanceformat.com/df5144983cf79f7c44c0f80316b9c61a/invoke.js"></script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/0c497401a88b857777170889c1d09e51/invoke.js"></script>
             </div>
         </div>
     </div>
@@ -256,13 +256,6 @@ def get_data():
     category = request.args.get('q', 'korean')
     with data_lock:
         return jsonify(load_content(category))
-
-@app.route('/ads.txt')
-def serve_ads_txt():
-    try:
-        return Response(open('ads.txt').read(), mimetype='text/plain')
-    except:
-        return "ads.txt not found", 404
 
 @app.route('/')
 def index(): return render_template_string(HTML_TEMPLATE)
